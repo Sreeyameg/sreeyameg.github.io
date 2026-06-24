@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sreeya Reddy | Civil Engineer & Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1a2e;
+      --slate:     #2d3561;
+      --steel:     #4a6fa5;
+      --sky:       #a8c5da;
+      --concrete:  #e8edf2;
+      --white:     #f7f9fb;
+      --accent:    #c47c3e;
+      --accent2:   #3d7a5f;
+      --text:      #2c2c3a;
+      --muted:     #6b7280;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(247,249,251,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--concrete);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--slate);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+      color: var(--muted); text-decoration: none; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--slate); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background: var(--ink);
+      position: relative; overflow: hidden;
+      padding: 80px 2rem 4rem;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.06;
+      background-image:
+        linear-gradient(var(--sky) 1px, transparent 1px),
+        linear-gradient(90deg, var(--sky) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero-inner {
+      max-width: 900px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase;
+      border: 1px solid var(--accent);
+      padding: 4px 12px; border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--sky); }
+    .hero-sub {
+      font-size: 1.1rem; color: #9ca3b8;
+      max-width: 560px; margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-stats {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .stat { border-left: 2px solid var(--accent); padding-left: 1rem; }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem; color: var(--white);
+    }
+    .stat-label {
+      font-size: 0.75rem; color: #9ca3b8;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.75rem 1.75rem;
+      font-size: 0.9rem; font-weight: 500;
+      text-decoration: none; border-radius: 3px;
+      transition: all 0.2s; cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+    }
+    .btn-primary:hover { background: #b36d30; transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid #4a5568; color: #9ca3b8;
+    }
+    .btn-outline:hover { border-color: var(--sky); color: var(--sky); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.14em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--slate);
+      margin-bottom: 3rem;
+      line-height: 1.2;
+    }
+
+    /* ABOUT */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+    }
+    .about-text p {
+      color: var(--muted); margin-bottom: 1rem;
+      font-size: 0.97rem; line-height: 1.8;
+    }
+    .about-text p strong { color: var(--text); }
+    .skills-grid {
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .skill-group-label {
+      font-size: 0.72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; padding: 3px 10px;
+      border-radius: 2px;
+      background: var(--concrete); color: var(--slate);
+    }
+
+    /* RESEARCH — signature element: blueprint card */
+    #research { background: var(--concrete); }
+    .research-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+    .research-card {
+      background: var(--white);
+      border-left: 4px solid var(--steel);
+      padding: 1.75rem 2rem;
+      border-radius: 0 4px 4px 0;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .research-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .research-card-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .research-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem; color: var(--slate);
+      margin-bottom: 0.75rem; line-height: 1.3;
+    }
+    .research-card p {
+      font-size: 0.88rem; color: var(--muted);
+      margin-bottom: 1rem; line-height: 1.7;
+    }
+    .research-meta {
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .meta-chip {
+      font-size: 0.72rem; padding: 3px 10px;
+      border-radius: 2px; font-weight: 500;
+    }
+    .chip-green { background: #d1fae5; color: #065f46; }
+    .chip-blue  { background: #dbeafe; color: #1e40af; }
+    .chip-amber { background: #fef3c7; color: #92400e; }
+    .research-metrics {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid var(--concrete);
+    }
+    .metric {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; color: var(--steel);
+    }
+    .metric span { color: var(--accent); font-weight: 600; }
+
+    /* PROJECTS */
+    #projects { background: var(--white); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      border: 1px solid var(--concrete);
+      border-radius: 4px; padding: 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--steel);
+      transition: background 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+    }
+    .project-card:hover::before { background: var(--accent); }
+    .project-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .project-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem; color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      font-size: 0.83rem; color: var(--muted);
+      line-height: 1.6; margin-bottom: 1rem;
+    }
+    .project-link {
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--steel); text-decoration: none;
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .project-link:hover { color: var(--accent); }
+
+    /* EXPERIENCE */
+    #experience { background: var(--ink); }
+    #experience .section-title { color: var(--white); }
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px; background: #2d3561;
+    }
+    .timeline-item {
+      position: relative; padding: 0 0 2.5rem 1.5rem;
+    }
+    .timeline-item::before {
+      content: ''; position: absolute;
+      left: -4px; top: 6px;
+      width: 8px; height: 8px;
+      border-radius: 50%; background: var(--accent);
+      border: 2px solid var(--ink);
+    }
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--accent);
+      letter-spacing: 0.08em; margin-bottom: 0.25rem;
+    }
+    .timeline-role {
+      font-weight: 600; font-size: 0.97rem;
+      color: var(--white); margin-bottom: 0.15rem;
+    }
+    .timeline-org {
+      font-size: 0.83rem; color: var(--sky);
+      margin-bottom: 0.6rem;
+    }
+    .timeline-desc {
+      font-size: 0.83rem; color: #9ca3b8;
+      line-height: 1.7;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--concrete); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+    }
+    .contact-text p {
+      font-size: 0.97rem; color: var(--muted);
+      line-height: 1.8; margin-bottom: 1.5rem;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.9rem; color: var(--slate);
+      text-decoration: none; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      background: var(--white); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .contact-card {
+      background: var(--white);
+      border-radius: 4px; padding: 2rem;
+      border: 1px solid #dde3ea;
+    }
+    .contact-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem; color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+    .contact-card p {
+      font-size: 0.85rem; color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail {
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .contact-detail-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.85rem; color: var(--text);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.8rem; color: #4a5568;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    footer a { color: var(--sky); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Sreeya Reddy</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Civil Engineer &amp; Researcher</div>
+    <h1>Building infrastructure<br>with <span>data and design</span></h1>
+    <p class="hero-sub">
+      B.E. Civil Engineering, CBIT Hyderabad · Springer Published Researcher ·
+      Targeting MS Construction Management, USA
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Springer Book Chapter</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">54</div>
+        <div class="stat-label">Life-365 Simulations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">44km</div>
+        <div class="stat-label">Govt. Project Corridor</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8.24</div>
+        <div class="stat-label">CGPA</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#research" class="btn btn-primary">View Research</a>
+      <a href="https://github.com/Sreeyameg" target="_blank" class="btn btn-outline">GitHub Profile</a>
+      <a href="https://linkedin.com/in/sreeyareddym" target="_blank" class="btn btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Civil engineer with a research mindset</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I am a <strong>Civil Engineering graduate</strong> from Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad with a CGPA of 8.24. My work spans structural research, AI-driven hydraulics, geospatial analysis, and construction project management.
+        </p>
+        <p>
+          My <strong>Springer-published research</strong> on AI modelling of scour depths was presented at HYDRO 2024 International Conference in Pune. My B.E. thesis used Life-365 software to model chloride ingress in concrete structures across coastal Indian cities.
+        </p>
+        <p>
+          Currently working as a <strong>GET – Specification Consultant at Assa Abloy Opening Solutions</strong>, coordinating hardware specifications across 50+ architects and residential/commercial projects in Hyderabad.
+        </p>
+        <p>
+          I am preparing to pursue a <strong>Master's in Construction Management in the USA</strong>, with a focus on integrating AI, data, and digital tools into infrastructure project delivery.
+        </p>
+      </div>
+      <div class="skills-grid">
+        <div>
+          <div class="skill-group-label">Civil & Design</div>
+          <div class="skill-tags">
+            <span class="tag">AutoCAD</span>
+            <span class="tag">SketchUp</span>
+            <span class="tag">STAAD.Pro</span>
+            <span class="tag">HEC-RAS</span>
+            <span class="tag">ANSYS</span>
+            <span class="tag">Life-365</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-label">AI & Data</div>
+          <div class="skill-tags">
+            <span class="tag">ANN-PSO</span>
+            <span class="tag">SVM</span>
+            <span class="tag">ANFIS</span>
+            <span class="tag">OriginPro</span>
+            <span class="tag">RCPT Modelling</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-label">Geospatial</div>
+          <div class="skill-tags">
+            <span class="tag">QGIS</span>
+            <span class="tag">ArcGIS</span>
+            <span class="tag">CAD Mapper</span>
+            <span class="tag">DEM</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-label">Construction Management</div>
+          <div class="skill-tags">
+            <span class="tag">BOQ</span>
+            <span class="tag">PlanSwift</span>
+            <span class="tag">Rate Analysis</span>
+            <span class="tag">Tender Documentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label">Publications & Research</div>
+    <h2 class="section-title">Peer-reviewed work</h2>
+    <div class="research-cards">
+
+      <div class="research-card">
+        <div class="research-card-type">Springer Nature · Book Chapter · 2024</div>
+        <h3>Experimental Investigations and AI Modelling of Scour Depths for Improved Structural Integrity</h3>
+        <p>
+          Applied ANN-PSO hybrid and SVM machine learning models to predict scour depth around bridge piers under clear water scouring conditions. Dataset compiled from 16 published experimental sources. ANN-PSO outperformed SVM across all statistical metrics.
+        </p>
+        <div class="research-meta">
+          <span class="meta-chip chip-green">Springer Published</span>
+          <span class="meta-chip chip-blue">HYDRO 2024, Pune</span>
+          <span class="meta-chip chip-amber">CBIT Seed Grant</span>
+        </div>
+        <div class="research-metrics">
+          <div class="metric">ANN-PSO R² <span>0.65</span></div>
+          <div class="metric">MAPE <span>20.25%</span></div>
+          <div class="metric">Nash-Sutcliffe E <span>0.708</span></div>
+          <div class="metric">SVM R² <span>0.51</span></div>
+        </div>
+      </div>
+
+      <div class="research-card">
+        <div class="research-card-type">B.E. Final Year Project · CBIT · April 2025</div>
+        <h3>Service Life Prediction of RHA Blended Concrete — Comparison with Fly Ash and GGBS</h3>
+        <p>
+          Used Life-365 software to simulate chloride ingress in RHA, FA and GGBS blended concrete across 54 scenarios covering Chennai and Visakhapatnam coastal zones. RHA at 15–20% replacement achieved 90–110% service life improvement over OPC. Turnitin similarity: 11%.
+        </p>
+        <div class="research-meta">
+          <span class="meta-chip chip-green">CBIT — Osmania University</span>
+          <span class="meta-chip chip-blue">Life-365 + OriginPro</span>
+          <span class="meta-chip chip-amber">Guide: Dr. K. Jagannadha Rao</span>
+        </div>
+        <div class="research-metrics">
+          <div class="metric">Simulations <span>54</span></div>
+          <div class="metric">RHA Improvement <span>90–110%</span></div>
+          <div class="metric">Optimal RHA <span>15–20%</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">Engineering work across scales</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-icon">🌊</div>
+        <h3>Scour Depth AI Modeling</h3>
+        <p>ANN-PSO & SVM models for bridge pier scour prediction. Springer published, HYDRO 2024 International Conference.</p>
+        <a href="https://github.com/Sreeyameg/scour-depth-ai-modeling" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🏗️</div>
+        <h3>RHA Concrete Service Life</h3>
+        <p>Life-365 durability simulation comparing RHA, FA and GGBS blended concrete under chloride exposure. B.E. thesis, CBIT 2025.</p>
+        <a href="https://github.com/Sreeyameg/rha-concrete-service-life" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🏙️</div>
+        <h3>Musi Riverfront Development</h3>
+        <p>44 km AI-powered riverfront planning for Telangana Govt. AutoCAD, SketchUp, GIS. Presented at Global AI Summit 2024.</p>
+        <a href="https://github.com/Sreeyameg/musi-riverfront-development" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">📐</div>
+        <h3>Construction Estimation Toolkit</h3>
+        <p>BOQ templates, rate analysis and quantity take-off tools from real ₹20–40 Crore commercial construction projects.</p>
+        <a href="https://github.com/Sreeyameg/construction-estimation-toolkit" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🗺️</div>
+        <h3>GIS Infrastructure Projects</h3>
+        <p>Geospatial analysis, infrastructure mapping and spatial data processing using QGIS, ArcGIS and CAD Mapper.</p>
+        <a href="https://github.com/Sreeyameg/gis-infrastructure-project" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🔩</div>
+        <h3>Spec Consulting — Assa Abloy</h3>
+        <p>Coordinated architectural hardware specifications across 50+ stakeholders for 4 major Hyderabad residential & commercial developments.</p>
+        <a href="#experience" class="project-link">View Experience →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Professional journey</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">AUG 2025 – PRESENT</div>
+        <div class="timeline-role">GET – Specification Consultant</div>
+        <div class="timeline-org">Assa Abloy Opening Solutions · Hyderabad</div>
+        <div class="timeline-desc">Coordinating with 50+ architects, consultants and contractors across residential and commercial developments. Site visits, IFC drawing reviews, technical consultations.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">JUN 2025 – AUG 2025</div>
+        <div class="timeline-role">GET – Cost Estimator</div>
+        <div class="timeline-org">KN Construction Consultants · Hyderabad</div>
+        <div class="timeline-desc">Prepared BOQs and cost estimates for ₹20–40 Crore commercial projects. Rate analysis using SoR and market benchmarking. Tender costing and bid evaluation support.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">JAN 2025 – MAY 2025</div>
+        <div class="timeline-role">Undergraduate Research Assistant</div>
+        <div class="timeline-org">BITS Pilani Hyderabad</div>
+        <div class="timeline-desc">Life-365 durability modeling for RCC slabs and beams. Simulated chloride ingress and predicted service life extension from 35 to 50 years through improved durability design.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">JUN 2024 – AUG 2024</div>
+        <div class="timeline-role">Design Engineer</div>
+        <div class="timeline-org">Telangana Technological Services · Govt. of Telangana</div>
+        <div class="timeline-desc">44 km infrastructure project — alignment layout interpretation, 2D/3D CAD modeling in AutoCAD and SketchUp. Presented at Global AI Summit 2024.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">DEC 2022 – JAN 2023</div>
+        <div class="timeline-role">Project Engineer</div>
+        <div class="timeline-org">SS Constructions · Hyderabad</div>
+        <div class="timeline-desc">Verified reinforcement quantities against BBS for 25+ RCC elements. Monitored M25/M30 concreting operations and material usage for cost efficiency.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's connect</h2>
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p>
+          I am actively seeking opportunities in Construction Management, infrastructure research, and AI-driven civil engineering roles — particularly in the context of US graduate admissions and internships.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:sreeyar56@gmail.com" class="contact-link">
+            <div class="contact-link-icon">📧</div>
+            sreeyar56@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/sreeyareddym" target="_blank" class="contact-link">
+            <div class="contact-link-icon">💼</div>
+            linkedin.com/in/sreeyareddym
+          </a>
+          <a href="https://github.com/Sreeyameg" target="_blank" class="contact-link">
+            <div class="contact-link-icon">🐙</div>
+            github.com/Sreeyameg
+          </a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Sreeya Reddy</h3>
+        <p>Civil Engineer · Researcher · US MS Applicant</p>
+        <div class="contact-detail">
+          <div class="contact-detail-item">🎓 B.E. Civil Engineering, CBIT — CGPA 8.24</div>
+          <div class="contact-detail-item">📍 Hyderabad, India</div>
+          <div class="contact-detail-item">📄 Springer Book Chapter Author</div>
+          <div class="contact-detail-item">🎤 HYDRO 2024 International Conference</div>
+          <div class="contact-detail-item">🏛️ Targeting MS Construction Management, USA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Sreeya Reddy · Built with purpose ·
+    <a href="https://github.com/Sreeyameg" target="_blank">GitHub</a> ·
+    <a href="https://linkedin.com/in/sreeyareddym" target="_blank">LinkedIn</a>
+  </p>
+</footer>
+
+</body>
+</html>
